@@ -399,3 +399,8 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+# Ignore executable files
+*.exe
+# Ignore unnecessary VS Code workspace files
+.vscode/tasks.json
+.vscode/settings.json
