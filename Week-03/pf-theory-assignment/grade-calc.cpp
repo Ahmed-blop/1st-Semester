@@ -2,7 +2,7 @@
 using namespace std;
 int main()
 {
-    int marks;
+    float marks;
     cout << "Enter your marks: ";
     cin >> marks;
     if (marks >= 90)
@@ -11,9 +11,8 @@ int main()
         cout << "Grade: B" << endl;
     else if (marks >= 70)
         cout << "Grade: C" << endl;
-    else if (marks >= 60)
-        cout << "Grade: D" << endl;
     else
         cout << "Grade: F" << endl;
+
     return 0;
 }
