@@ -13,6 +13,5 @@ int main()
         cout << "Grade: C" << endl;
     else
         cout << "Grade: F" << endl;
-
     return 0;
 }
