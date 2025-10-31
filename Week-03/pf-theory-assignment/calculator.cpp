@@ -23,3 +23,5 @@ int main()
     }
     else
         cout << "Error: Invalid operator!" << endl;
+    return 0;
+}
