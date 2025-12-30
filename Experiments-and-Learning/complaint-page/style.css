@@ -1,0 +1,127 @@
+/* Reset */
+* { box-sizing: border-box; font-family: 'Inter', sans-serif; margin:0; padding:0; }
+body { min-height:100vh; display:flex; flex-direction:column; align-items:center; background: var(--bg-color); transition: 0.5s; color: var(--text-color); }
+
+:root {
+    --bg-color: linear-gradient(135deg, #eef2f3, #d9e4f5);
+    --container-bg: rgba(255,255,255,0.85);
+    --text-color: #333;
+    --input-bg: rgba(245,247,251,0.8);
+    --button-bg: linear-gradient(90deg, #6a8cff, #4bc2ff);
+}
+
+body.dark {
+    --bg-color: linear-gradient(135deg, #1e1e2f, #2c2c3f);
+    --container-bg: rgba(40,40,55,0.85);
+    --text-color: #eee;
+    --input-bg: rgba(60,60,80,0.7);
+    --button-bg: linear-gradient(90deg, #ff6a6a, #ff8f6a);
+}
+
+/* Navbar */
+nav {
+    width: 100%;
+    padding:15px 30px;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    background: var(--container-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    transition:0.5s;
+}
+.logo { font-weight:600; font-size:1.2rem; }
+.toggle-container { display:flex; align-items:center; gap:10px; }
+
+/* Toggle Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+}
+.switch input { display:none; }
+.slider {
+  position: absolute; cursor: pointer;
+  top:0; left:0; right:0; bottom:0;
+  background-color:#ccc; border-radius:22px; transition:.4s;
+}
+.slider:before {
+  position: absolute;
+  content:"";
+  height:18px; width:18px;
+  left:2px; bottom:2px;
+  background-color:white; border-radius:50%; transition:.4s;
+}
+input:checked + .slider { background-color:#4bc2ff; }
+input:checked + .slider:before { transform: translateX(23px); }
+
+/* Container */
+.container {
+    margin-top: 40px;
+    width:90%;
+    max-width:500px;
+    background: var(--container-bg);
+    backdrop-filter: blur(15px);
+    border-radius:25px;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.08);
+    text-align:center;
+    animation: slideUp 1s ease forwards;
+}
+
+/* Headings */
+h1 { margin-bottom:10px; font-weight:600; font-size:1.8rem; }
+p { color: var(--text-color); margin-bottom:25px; }
+
+/* Input Fields */
+.input-group { position:relative; margin-bottom:25px; }
+.input-group input,
+.input-group textarea {
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background: var(--input-bg);
+    outline:none;
+    font-size:1rem;
+    transition:0.3s;
+    color: var(--text-color);
+}
+.input-group input:focus,
+.input-group textarea:focus { background:#fff; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
+
+.input-group label {
+    position:absolute; top:50%; left:15px; transform:translateY(-50%);
+    pointer-events:none; color:#aaa; font-size:0.95rem; transition:0.3s; background:transparent; padding:0 3px;
+}
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label,
+.input-group textarea:focus + label,
+.input-group textarea:not(:placeholder-shown) + label {
+    top:-10px; left:12px; font-size:0.8rem; color: var(--text-color); background: var(--container-bg); border-radius:5px;
+}
+
+/* Button */
+.submit-btn {
+    padding:15px 40px; border:none; border-radius:12px;
+    background: var(--button-bg); color:#fff;
+    font-size:1rem; font-weight:600; cursor:pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.submit-btn:hover { transform: translateY(-3px); box-shadow:0 10px 20px rgba(0,0,0,0.15); }
+
+/* Toast */
+#toast {
+    position: fixed; bottom:30px; left:50%; transform:translateX(-50%);
+    background:#4BC2FF; color:#fff; padding:15px 30px; border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+    opacity:0; pointer-events:none; transition: opacity 0.5s ease;
+}
+
+/* Animations */
+@keyframes slideUp { 0%{opacity:0;transform:translateY(30px);} 100%{opacity:1;transform:translateY(0);} }
+.fade-in { opacity:0; animation: fadeIn 0.8s forwards; }
+.fade-in.delay-1 { animation-delay:0.3s; }
+.fade-in.delay-2 { animation-delay:0.6s; }
+@keyframes fadeIn { to{opacity:1;} }
