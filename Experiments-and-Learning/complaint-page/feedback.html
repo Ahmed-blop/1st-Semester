@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Smart City – Complaint</title>
+<title>Smart City – Feedback</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -19,14 +19,13 @@
 </nav>
 
 <main class="container fade-in">
-  <h1>Submit a Complaint</h1>
+  <h1>Give Feedback</h1>
 
-  <form name="complaint" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="complaint">
+  <form name="feedback" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="feedback">
 
     <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <textarea name="message" placeholder="Your Complaint" required></textarea>
+    <textarea name="feedback" placeholder="Your Feedback" required></textarea>
 
     <button type="submit">Submit</button>
   </form>

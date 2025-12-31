@@ -1,20 +1,24 @@
-const form = document.getElementById('complaintForm');
-const toast = document.getElementById('toast');
-const toggle = document.getElementById('darkToggle');
-const body = document.body;
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("themeToggle");
+  const body = document.body;
 
-// Dark Mode Toggle
-toggle.addEventListener('change', () => {
-    body.classList.toggle('dark');
-});
+  if (!toggleBtn) return;
 
-// Form Submission
-form.addEventListener('submit', function(e){
-    e.preventDefault();
+  // Load saved theme
+  if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark");
+    toggleBtn.textContent = "☀️";
+  }
 
-    // Show toast
-    toast.style.opacity = '1';
-    setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+  toggleBtn.addEventListener("click", () => {
+    body.classList.toggle("dark");
 
-    form.reset();
+    if (body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+      toggleBtn.textContent = "☀️";
+    } else {
+      localStorage.setItem("theme", "light");
+      toggleBtn.textContent = "🌙";
+    }
+  });
 });
