@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Leaderboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ScoreConnect | Leaderboard</div>
+        <div class="nav-actions">
+            <a href="javascript:history.back()" class="nav-btn">⬅ Back</a>
+            <button id="profile-btn" class="nav-btn">👤 Profile</button>
+            <button id="theme-btn" class="theme-toggle">🌙</button>
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="glass-card">
+            <h3>🏆 Class Performance Ranking</h3>
+            <p>Comparing performance across Assignments, Quizzes, Mids, and Finals.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student Name</th>
+                        <th>Reg No</th>
+                        <th>Total Score</th>
+                        <th>Percentage</th>
+                        <th>Grade</th>
+                    </tr>
+                </thead>
+                <tbody id="leaderboard-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-avatar">👤</div>
+            <h2 id="modal-name">Loading...</h2>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
+            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <button id="close-modal" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

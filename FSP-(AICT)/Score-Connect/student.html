@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Student</span></div>
+        <div class="nav-actions">
+            <a href="leaderboard.html" class="nav-btn">📊 Class Stats</a>
+            <button id="profile-btn" class="nav-btn">👤 Profile</button>
+            <button id="theme-btn" class="theme-toggle">🌙</button>
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="glass-card">
+            <h3>Student Profile</h3>
+            <p><strong>Name:</strong> <span id="student-name">...</span></p>
+            <p><strong>Registration No:</strong> <span id="student-id">...</span></p>
+            <p><strong>Course:</strong> Application of ICT (CS-106L)</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>Academic Performance</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Assessment</th>
+                        <th>Obtained</th>
+                        <th>Total</th>
+                        <th>%</th>
+                    </tr>
+                </thead>
+                <tbody id="marks-body"></tbody>
+            </table>
+        </div>
+
+        <div class="glass-card">
+            <h3>Summary</h3>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                <span>Total Score: <strong id="total-marks">0/0</strong></span>
+                <span>Percentage: <strong id="percentage">0%</strong></span>
+            </div>
+            
+            <div class="progress-wrapper">
+                <div class="progress-bg">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 15px; text-align: right;">Status: <span id="grade-status">...</span></p>
+        </div>
+    </div>
+
+    <div id="profile-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-avatar">👤</div>
+            <h2 id="modal-name">Loading...</h2>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
+            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <button id="close-modal" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

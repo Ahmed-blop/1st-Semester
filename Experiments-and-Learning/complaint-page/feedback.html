@@ -8,6 +8,13 @@
 </head>
 
 <body>
+
+<div class="background-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
 <nav>
   <h2 class="logo">Smart City</h2>
   <div class="nav-links">
@@ -25,9 +32,10 @@
     <input type="hidden" name="form-name" value="feedback">
 
     <input type="text" name="name" placeholder="Your Name" required>
-    <textarea name="feedback" placeholder="Your Feedback" required></textarea>
+    <textarea name="feedback" placeholder="Your Feedback" rows="5" required></textarea>
 
     <button type="submit">Submit</button>
+    <form name="feedback" method="POST" data-netlify="true" action="success.html"></form>
   </form>
 </main>
 

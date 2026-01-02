@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Teacher</span></div>
+        <div class="nav-actions">
+            <a href="leaderboard.html" class="nav-btn">📊 Class Stats</a>
+            <button id="profile-btn" class="nav-btn">👤 Profile</button>
+            <button id="theme-btn" class="theme-toggle">🌙</button>
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        
+        <div class="glass-card" style="text-align: center;">
+            <h3>Welcome, Ms. Noor Saba</h3>
+            <p>CS-106L - AICT Panel</p>
+        </div>
+
+        <div class="glass-card">
+            <h3>📁 Upload Assignment</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">Upload Word/PDF files for students.</p>
+            <div class="input-group">
+                <input type="file" id="assign-file" accept=".doc,.docx,.pdf">
+            </div>
+            <button id="upload-assign-btn">Publish Assignment</button>
+        </div>
+
+        <div class="glass-card">
+            <h3>📊 Update Marks</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem;">Upload Excel sheet (.xlsx) for results.</p>
+            <div class="input-group">
+                <input type="file" id="marks-file" accept=".xlsx,.csv">
+            </div>
+            <button id="upload-marks-btn">Update Results</button>
+        </div>
+
+    </div>
+
+    <div id="profile-modal" class="modal-overlay">
+        <div class="modal-content glass-card">
+            <div class="modal-avatar">👤</div>
+            <h2 id="modal-name">Loading...</h2>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
+            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <button id="close-modal" style="margin-top: 20px;">Close</button>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

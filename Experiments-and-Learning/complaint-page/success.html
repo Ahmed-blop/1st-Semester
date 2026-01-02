@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Smart City – Suggestions</title>
+<title>Smart City – Submitted</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -25,18 +25,17 @@
   </div>
 </nav>
 
-<main class="container fade-in">
-  <h1>Suggestions</h1>
+<main class="container fade-in" style="text-align: center;">
+  <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+  
+  <h1>Success!</h1>
+  <p style="font-size: 1.1rem; margin-bottom: 30px;">
+    Your submission has been received successfully.
+  </p>
 
-  <form name="suggestions" method="POST" data-netlify="true">
-    <input type="hidden" name="form-name" value="suggestions">
-
-    <input type="text" name="name" placeholder="Your Name" required>
-    <textarea name="suggestion" placeholder="Your Suggestion" rows="5" required></textarea>
-
-    <button type="submit">Submit</button>
-    <form name="suggestions" method="POST" data-netlify="true" action="success.html"></form>
-  </form>
+  <a href="index.html">
+    <button type="button">Return Home</button>
+  </a>
 </main>
 
 <script src="script.js"></script>

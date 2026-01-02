@@ -8,6 +8,13 @@
 </head>
 
 <body>
+
+<div class="background-blobs">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+
 <nav>
   <h2 class="logo">Smart City</h2>
   <div class="nav-links">
@@ -26,9 +33,10 @@
 
     <input type="text" name="name" placeholder="Your Name" required>
     <input type="email" name="email" placeholder="Email Address" required>
-    <textarea name="message" placeholder="Your Complaint" required></textarea>
+    <textarea name="message" placeholder="Your Complaint" rows="4" required></textarea>
 
     <button type="submit">Submit</button>
+    <form name="complaint" method="POST" data-netlify="true" action="success.html"></form>
   </form>
 </main>
 

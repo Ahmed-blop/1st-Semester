@@ -1,86 +1,207 @@
 :root {
-  --bg: #f3f6ff;
-  --card: #ffffff;
-  --text: #111827;
-  --accent: linear-gradient(135deg, #6366f1, #22d3ee);
+  /* Smart City Theme Colors */
+  --bg-gradient: linear-gradient(135deg, #0f172a, #312e81);
+  --text: #ffffff;
+  --accent: #22d3ee;
+  --input-bg: rgba(255, 255, 255, 0.1);
+  --input-border: rgba(255, 255, 255, 0.2);
 }
 
-body.dark {
-  --bg: #0f172a;
-  --card: #1e293b;
-  --text: #e5e7eb;
+/* Light/Dark mode toggling logic for text/accents only 
+   (Background stays dark/gradient for the glass effect to look good) */
+body.light-mode {
+  --bg-gradient: linear-gradient(135deg, #e0e7ff, #a5b4fc);
+  --text: #1e293b;
+  --input-bg: rgba(255, 255, 255, 0.4);
+  --input-border: rgba(0, 0, 0, 0.1);
 }
 
 * {
   box-sizing: border-box;
-  font-family: Inter, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 body {
   margin: 0;
-  background: var(--bg);
+  /* Complex gradient background to make glassmorphism pop */
+  background: var(--bg-gradient);
+  background-attachment: fixed; /* Keeps background static while scrolling */
   color: var(--text);
   transition: 0.3s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
 }
 
+/* --- The Interactive Background Blobs --- */
+.background-blobs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Behind everything */
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.6;
+  animation: float 10s infinite ease-in-out alternate;
+}
+
+.blob-1 {
+  width: 300px;
+  height: 300px;
+  background: #6366f1;
+  top: 10%;
+  left: 20%;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: #22d3ee;
+  bottom: 10%;
+  right: 10%;
+  animation-delay: -2s;
+}
+
+.blob-3 {
+  width: 200px;
+  height: 200px;
+  background: #f472b6;
+  bottom: 30%;
+  left: 10%;
+  animation-delay: -5s;
+}
+
+/* --- Navigation --- */
 nav {
-  padding: 20px;
+  padding: 20px 40px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  backdrop-filter: blur(5px);
+  z-index: 10;
 }
 
 .logo {
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #22d3ee, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .nav-links a {
-  margin-right: 15px;
+  margin-right: 20px;
   text-decoration: none;
   color: var(--text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
 }
 
 #themeToggle {
   border: none;
-  padding: 8px 12px;
+  padding: 10px 14px;
   border-radius: 50%;
-  background: var(--accent);
-  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: var(--text);
   cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.3s;
+  border: 1px solid var(--input-border);
 }
 
+#themeToggle:hover {
+  transform: rotate(20deg) scale(1.1);
+}
+
+/* --- Glassmorphism Card (Your Requested Code) --- */
 .container {
-  max-width: 420px;
-  margin: 40px auto;
-  background: var(--card);
-  padding: 30px;
+  max-width: 450px;
+  margin: 60px auto;
+  padding: 40px;
+  
+  /* FROM https://css.glass */
+  background: rgba(30, 21, 21, 0.2);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px); /* Increased blur slightly for better text readability */
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Tweaked border color for visibility */
+  
+  transform-style: preserve-3d;
+  perspective: 1000px;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+/* --- Form Elements --- */
 input, textarea {
   width: 100%;
-  margin: 12px 0;
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: transparent;
+  margin: 10px 0 20px;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
   color: var(--text);
+  font-size: 1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3);
 }
 
 button {
   width: 100%;
-  padding: 12px;
+  padding: 15px;
   border-radius: 12px;
   border: none;
-  background: var(--accent);
+  background: linear-gradient(135deg, #6366f1, #22d3ee);
   color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
 }
 
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.6);
+}
+
+/* --- Animations --- */
 .fade-in {
-  animation: fade .8s ease;
+  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-@keyframes fade {
-  from {opacity:0; transform: translateY(10px);}
-  to {opacity:1;}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(20px, 40px); }
 }
