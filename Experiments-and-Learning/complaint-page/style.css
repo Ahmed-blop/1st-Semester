@@ -94,6 +94,7 @@ nav {
   font-size: 1.5rem;
   letter-spacing: 1px;
   background: linear-gradient(to right, #22d3ee, #818cf8);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
