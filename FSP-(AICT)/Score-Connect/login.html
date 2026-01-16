@@ -6,37 +6,130 @@
     <title>ScoreConnect | Login</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <div style="position: absolute; top: 20px; right: 20px;">
+<body class="login-body">
+    <div style="position: absolute; top: 20px; right: 20px; z-index: 100;">
         <button id="theme-btn" class="theme-toggle">🌙</button>
     </div>
 
-    <div class="container">
-        <div class="glass-card">
-            <h2 style="color: var(--primary-btn);">ScoreConnect</h2>
-            <h3 style="font-weight: 400; font-size: 1rem; opacity: 0.8;">HITEC University - CS-106L</h3>
-            
-            <form id="login-form">
-                <div class="input-group">
-                    <label for="user-id">Registration No / Teacher ID</label>
-                    <input type="text" id="user-id" placeholder="e.g., 25-SE-053" required>
+    <div class="login-container">
+        <!-- Left Column: Branding -->
+        <div class="login-left">
+            <div class="login-branding">
+                <div class="glass-icon" style="font-size: 4rem; margin-bottom: 2rem; display: flex; justify-content: center; align-items: center;">
+                    <img src="images/logo.png" alt="ScoreConnect" style="width: 160px; height: 160px; object-fit: contain; filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));">
                 </div>
-                
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="••••••" required>
+                <h1>ScoreConnect</h1>
+                <p>Assignment & Quiz Marks Tracker</p>
+
+                <div style="margin-top: 3rem; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="login-feature">
+                        <div class="glass-icon">📈</div>
+                        <h3>Track Your Progress</h3>
+                        <p>View your assignment and quiz marks in real-time</p>
+                    </div>
+
+                    <div class="login-feature">
+                        <div class="glass-icon">🎓</div>
+                        <h3>For Students & Teachers</h3>
+                        <p>Dedicated dashboards for both roles</p>
+                    </div>
                 </div>
 
-                <div id="error-msg"></div>
+                <div class="login-course-info">
+                    <p><strong>Course: CS-106L</strong></p>
+                    <p>Application of ICT</p>
+                    <p>HITEC University, Taxila</p>
+                </div>
+            </div>
+        </div>
 
-                <button type="submit" style="margin-top: 15px;">Login to Portal</button>
-            </form>
-            
-            <p style="text-align: center; margin-top: 15px; font-size: 0.8rem; opacity: 0.7;">
-                <strong>Hint:</strong> Student (25-SE-053 / ahmed123) <br> Teacher (teacher01 / teach123)
-            </p>
+        <!-- Right Column: Login Form -->
+        <div class="login-right">
+            <div class="login-form-wrapper">
+                <h2>Welcome Back</h2>
+                <p>Sign in to access your dashboard</p>
+
+                <!-- Role Selection -->
+                <div class="role-selector">
+                    <button type="button" class="role-btn active" data-role="student">
+                        ○ Student
+                    </button>
+                    <button type="button" class="role-btn" data-role="teacher">
+                        ○ Teacher
+                    </button>
+                </div>
+
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="user-id">Registration Number</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">○</span>
+                            <input type="text" id="user-id" placeholder="Enter your Reg No" required>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">○</span>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                            <button type="button" class="toggle-password" id="toggle-pwd">○</button>
+                        </div>
+                    </div>
+
+                    <div id="error-msg" style="margin-bottom: 1rem;"></div>
+
+                    <button type="submit" class="login-btn">Sign In</button>
+                </form>
+
+                <!-- Quick Login -->
+                <div class="quick-login">
+                    <p>Quick Login (Demo Credentials)</p>
+                    <div class="quick-login-buttons">
+                        <button type="button" class="quick-btn" onclick="quickLogin('student')">Student Demo</button>
+                        <button type="button" class="quick-btn" onclick="quickLogin('teacher')">Teacher Demo</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
     <script src="js/app.js"></script>
+    <script>
+        // Role selector
+        document.querySelectorAll('.role-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.role-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Password toggle
+        document.getElementById('toggle-pwd').addEventListener('click', function(e) {
+            e.preventDefault();
+            const input = document.getElementById('password');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        });
+
+        // Quick login function - fills credentials and submits form
+        function quickLogin(role) {
+            const userIdInput = document.getElementById('user-id');
+            const passwordInput = document.getElementById('password');
+            const loginForm = document.getElementById('login-form');
+            
+            if (role === 'student') {
+                userIdInput.value = '25-SE-053';
+                passwordInput.value = 'ahmed123';
+            } else if (role === 'teacher') {
+                userIdInput.value = 'teacher01';
+                passwordInput.value = 'teach123';
+            }
+            
+            // Trigger form submission after a short delay
+            setTimeout(() => {
+                loginForm.dispatchEvent(new Event('submit'));
+            }, 100);
+        }
+    </script>
 </body>
 </html>

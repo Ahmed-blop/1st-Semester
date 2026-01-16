@@ -9,9 +9,12 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Teacher</span></div>
+        <div class="logo">
+            <img id="logo-img" src="images/logo.png" alt="ScoreConnect Logo">
+            <span>ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Teacher</span></span>
+        </div>
         <div class="nav-actions">
-            <a href="leaderboard.html" class="nav-btn"> Class Stats</a>
+            <a href="leaderboard.html" class="nav-btn">Class Stats</a>
             <button id="profile-btn" class="nav-btn">Profile</button>
             <button id="theme-btn" class="theme-toggle">🌙</button>
             <button id="logout-btn" class="secondary-btn">Logout</button>
@@ -20,39 +23,78 @@
 
     <div class="dashboard-container">
         
-        <div class="glass-card" style="text-align: center;">
-            <h3>Welcome, Ms. Noor Saba</h3>
-            <p>CS-106L - AICT Panel</p>
+        <div class="glass-card" style="text-align: center; grid-column: 1 / -1;">
+            <h2>Welcome, <span id="teacher-name">Ms. Noor Saba</span></h2>
+            <p style="opacity: 0.8;">CS-106L - Application of Information and Communication Technology</p>
         </div>
 
-        <div class="glass-card">
-            <h3> Upload Assignment</h3>
-            <p style="margin-bottom: 15px; font-size: 0.9rem;">Upload Word/PDF files for students.</p>
+        <!-- Teacher Stats Row -->
+        <div class="stats-row" style="grid-column: 1 / -1;">
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">👥</span>
+                </div>
+                <div class="stat-value">10</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">📊</span>
+                </div>
+                <div class="stat-value" id="avg-score">75%</div>
+                <div class="stat-label">Average Score</div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">✅</span>
+                </div>
+                <div class="stat-value" id="pass-rate">80%</div>
+                <div class="stat-label">Pass Rate</div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">🏆</span>
+                </div>
+                <div class="stat-value" id="highest-score">90/100</div>
+                <div class="stat-label">Highest Score</div>
+            </div>
+        </div>
+
+        <!-- Upload Assignment -->
+        <div class="glass-card upload-card">
+            <h3>Upload Assignment</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem; opacity: 0.8;">Upload Word/PDF files for students.</p>
             <div class="input-group">
                 <input type="file" id="assign-file" accept=".doc,.docx,.pdf">
             </div>
             <button id="upload-assign-btn">Publish Assignment</button>
         </div>
 
-        <div class="glass-card">
-            <h3>Update Marks</h3>
-            <p style="margin-bottom: 15px; font-size: 0.9rem;">Upload Excel sheet (.xlsx) for results.</p>
+        <!-- Upload Marks -->
+        <div class="glass-card upload-card">
+            <h3>Upload Marks Sheet</h3>
+            <p style="margin-bottom: 15px; font-size: 0.9rem; opacity: 0.8;">Upload Excel sheet (.xlsx) for results.</p>
             <div class="input-group">
                 <input type="file" id="marks-file" accept=".xlsx,.csv">
             </div>
-            <button id="upload-marks-btn">Update Results</button>
+            <button id="upload-marks-btn">Publish Marks</button>
         </div>
 
     </div>
 
     <div id="profile-modal" class="modal-overlay">
         <div class="modal-content glass-card">
-            <div class="modal-avatar">👤</div>
+            <div class="modal-avatar">
+                <img id="modal-avatar-img" src="" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <h2 id="modal-name">Loading...</h2>
-            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px; background: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">...</p>
             <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
-            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
-            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <p><strong>ID:</strong> <span id="modal-id" style="color: #3b82f6; font-weight: 600;">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email" style="color: #10b981;">...</span></p>
             <button id="close-modal" style="margin-top: 20px;">Close</button>
         </div>
     </div>

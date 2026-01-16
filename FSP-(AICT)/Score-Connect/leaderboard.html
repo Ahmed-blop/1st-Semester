@@ -9,10 +9,13 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">ScoreConnect | Leaderboard</div>
+        <div class="logo">
+            <img id="logo-img" src="images/logo.png" alt="ScoreConnect Logo">
+            <span>ScoreConnect | Leaderboard</span>
+        </div>
         <div class="nav-actions">
-            <a href="javascript:history.back()" class="nav-btn">⬅ Back</a>
-            <button id="profile-btn" class="nav-btn">👤 Profile</button>
+            <a href="javascript:history.back()" class="nav-btn">Back</a>
+            <button id="profile-btn" class="nav-btn">Profile</button>
             <button id="theme-btn" class="theme-toggle">🌙</button>
             <button id="logout-btn" class="secondary-btn">Logout</button>
         </div>
@@ -41,12 +44,14 @@
 
     <div id="profile-modal" class="modal-overlay">
         <div class="modal-content glass-card">
-            <div class="modal-avatar">👤</div>
+            <div class="modal-avatar">
+                <img id="modal-avatar-img" src="" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <h2 id="modal-name">Loading...</h2>
-            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">...</p>
             <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
-            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
-            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <p><strong>ID:</strong> <span id="modal-id" style="color: #3b82f6; font-weight: 600;">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email" style="color: #10b981;">...</span></p>
             <button id="close-modal" style="margin-top: 20px;">Close</button>
         </div>
     </div>

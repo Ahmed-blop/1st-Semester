@@ -9,7 +9,10 @@
 <body>
 
     <nav class="navbar">
-        <div class="logo">ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Student</span></div>
+        <div class="logo">
+            <img id="logo-img" src="images/logo.png" alt="ScoreConnect Logo">
+            <span>ScoreConnect <span style="font-size: 0.8rem; font-weight: normal;">| Student</span></span>
+        </div>
         <div class="nav-actions">
             <a href="leaderboard.html" class="nav-btn">Class Stats</a>
             <button id="profile-btn" class="nav-btn">Profile</button>
@@ -19,53 +22,106 @@
     </nav>
 
     <div class="dashboard-container">
-        <div class="glass-card">
-            <h3>Student Profile</h3>
-            <p><strong>Name:</strong> <span id="student-name">...</span></p>
-            <p><strong>Registration No:</strong> <span id="student-id">...</span></p>
-            <p><strong>Course:</strong> AICT</p>
-        </div>
-
-        <div class="glass-card">
-            <h3>Academic Performance</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Assessment</th>
-                        <th>Obtained</th>
-                        <th>Total</th>
-                        <th>%</th>
-                    </tr>
-                </thead>
-                <tbody id="marks-body"></tbody>
-            </table>
-        </div>
-
-        <div class="glass-card">
-            <h3>Summary</h3>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                <span>Total Score: <strong id="total-marks">0/0</strong></span>
-                <span>Percentage: <strong id="percentage">0%</strong></span>
+        <!-- Stats Cards Row -->
+        <div class="stats-row">
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">📊</span>
+                </div>
+                <div class="stat-value" id="total-marks">0/0</div>
+                <div class="stat-label">Total Marks</div>
             </div>
-            
-            <div class="progress-wrapper">
-                <div class="progress-bg">
-                    <div class="progress-fill" id="progress-fill"></div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">📈</span>
+                </div>
+                <div class="stat-value" id="percentage">0%</div>
+                <div class="stat-label">Percentage</div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">✏️</span>
+                </div>
+                <div class="stat-value" id="assignment-marks">0/30</div>
+                <div class="stat-label">Assignment</div>
+            </div>
+
+            <div class="glass-card stat-card">
+                <div class="stat-header">
+                    <span class="stat-icon">❓</span>
+                </div>
+                <div class="stat-value" id="quiz-marks">0/40</div>
+                <div class="stat-label">Quiz</div>
+            </div>
+        </div>
+
+        <!-- Main Content Row -->
+        <div class="main-row">
+            <!-- Left Column: Profile -->
+            <div class="glass-card profile-card">
+                <h3>Student Profile</h3>
+                <div class="profile-content">
+                    <div class="profile-avatar" data-avatar="student-profile">
+                        <img id="student-avatar" src="" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <p><strong>Name:</strong> <span id="student-name" style="background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: bold;">Loading...</span></p>
+                    <p><strong>ID:</strong> <span id="student-id" style="color: #3b82f6; font-weight: 600;">Loading...</span></p>
+                    <p><strong>Course:</strong> <span style="color: #10b981;">AICT</span></p>
+                    <p><strong>Semester:</strong> <span style="color: #f59e0b;">1st</span></p>
+                </div>
+                <div class="profile-status">
+                    <p><strong>Current Grade:</strong></p>
+                    <div id="grade-status" style="font-size: 2.5rem; text-align: center; margin-top: 10px; background: linear-gradient(135deg, #10b981 0%, #059669 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">-</div>
                 </div>
             </div>
-            
-            <p style="margin-top: 15px; text-align: right;">Status: <span id="grade-status">...</span></p>
+
+            <!-- Right Column: Performance & Progress -->
+            <div class="right-column">
+                <div class="glass-card">
+                    <h3>Overall Progress</h3>
+                    <div class="progress-wrapper">
+                        <div class="progress-info">
+                            <span>0%</span>
+                            <span id="progress-percentage">0%</span>
+                            <span>100%</span>
+                        </div>
+                        <div class="progress-bg">
+                            <div class="progress-fill" id="progress-fill"></div>
+                        </div>
+                        <div class="progress-label">50% (Pass)</div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3>Detailed Marks Breakdown</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Assessment</th>
+                                <th>Marks</th>
+                                <th>Max</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody id="marks-body"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
     <div id="profile-modal" class="modal-overlay">
         <div class="modal-content glass-card">
-            <div class="modal-avatar">👤</div>
+            <div class="modal-avatar">
+                <img id="modal-avatar-img" src="" alt="Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <h2 id="modal-name">Loading...</h2>
-            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px;">...</p>
+            <p id="modal-role" style="opacity: 0.8; margin-bottom: 10px; background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-weight: 600;">...</p>
             <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 10px 0;">
-            <p><strong>ID:</strong> <span id="modal-id">...</span></p>
-            <p><strong>Email:</strong> <span id="modal-email">...</span></p>
+            <p><strong>ID:</strong> <span id="modal-id" style="color: #3b82f6; font-weight: 600;">...</span></p>
+            <p><strong>Email:</strong> <span id="modal-email" style="color: #10b981;">...</span></p>
             <button id="close-modal" style="margin-top: 20px;">Close</button>
         </div>
     </div>
