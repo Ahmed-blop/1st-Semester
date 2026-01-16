@@ -1,7 +1,7 @@
 const CLASS_DATA = [
-    { id: "25-SE-053", name: "Muhammad Ahmed Hassan", assign: 9, quiz: 8, mid: 25, final: 35, total: 77 },
+    { id: "25-SE-053", name: "Muhammad Ahmed Hassan", assign: 9, quiz: 9, mid: 28, final: 40, total: 85 },
     { id: "25-SE-091", name: "Muhammad Haseeb", assign: 8, quiz: 7, mid: 22, final: 30, total: 67 },
-    { id: "25-SE-026", name: "Muhammad Sarim", assign: 10, quiz: 9, mid: 28, final: 38, total: 85 },
+    { id: "25-SE-026", name: "Muhammad Sarim", assign: 10, quiz: 9, mid: 28, final: 21, total: 70 },
     { id: "25-SE-101", name: "Ayesha", assign: 7, quiz: 6, mid: 18, final: 25, total: 56 },
     { id: "25-SE-104", name: "Bilal Ahmed", assign: 5, quiz: 4, mid: 12, final: 0, total: 21 } 
 ];
@@ -15,9 +15,9 @@ const USERS = {
         email: "25-se-053@student.hitecuni.edu.pk",
         marks: [
             { title: "Assignment 1 (Word)", obtain: 9, total: 10 },
-            { title: "Quiz 1 (Topic A)", obtain: 8, total: 10 },
-            { title: "Midterm Exam", obtain: 25, total: 30 },
-            { title: "Final Project", obtain: 35, total: 40 }
+            { title: "Quiz 1 (Topic A)", obtain: 9, total: 10 },
+            { title: "Midterm Exam", obtain: 28, total: 30 },
+            { title: "Final Project", obtain: 40, total: 40 }
         ]
     },
     teacher: {
