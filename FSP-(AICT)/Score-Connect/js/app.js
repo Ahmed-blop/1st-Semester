@@ -81,13 +81,26 @@ function initSharedFeatures() {
             
             // Set modal avatar - use direct image if available
             const modalAvatarImg = document.getElementById("modal-avatar-img");
+            const modalAvatarContainer = document.querySelector('.modal-avatar');
             if (modalAvatarImg && user.avatar) {
                 modalAvatarImg.src = user.avatar;
                 modalAvatarImg.alt = user.name;
                 modalAvatarImg.style.display = "block";
                 modalAvatarImg.onerror = () => {
+                    // Fallback: show initials or default icon
                     modalAvatarImg.style.display = "none";
-                    document.querySelector('.modal-avatar').innerHTML = "👤";
+                    if (!modalAvatarContainer.querySelector('.avatar-fallback')) {
+                        const fallback = document.createElement('div');
+                        fallback.className = 'avatar-fallback';
+                        fallback.style.cssText = 'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: white;';
+                        fallback.textContent = user.name.charAt(0).toUpperCase();
+                        modalAvatarContainer.appendChild(fallback);
+                    }
+                };
+                modalAvatarImg.onload = () => {
+                    // Remove fallback if image loads successfully
+                    const fallback = modalAvatarContainer.querySelector('.avatar-fallback');
+                    if (fallback) fallback.remove();
                 };
             }
             
@@ -159,10 +172,27 @@ function initStudentDashboard() {
     
     // Display student avatar - direct image assignment
     const avatarImg = document.getElementById("student-avatar");
+    const avatarContainer = document.querySelector('.profile-avatar');
     if (avatarImg && studentData.avatar) {
         avatarImg.src = studentData.avatar;
         avatarImg.alt = studentData.name;
         avatarImg.style.display = "block";
+        avatarImg.onerror = () => {
+            // Fallback: show initials
+            avatarImg.style.display = "none";
+            if (!avatarContainer.querySelector('.avatar-fallback')) {
+                const fallback = document.createElement('div');
+                fallback.className = 'avatar-fallback';
+                fallback.style.cssText = 'width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; font-weight: bold;';
+                fallback.textContent = studentData.name.charAt(0).toUpperCase();
+                avatarContainer.appendChild(fallback);
+            }
+        };
+        avatarImg.onload = () => {
+            // Remove fallback if image loads successfully
+            const fallback = avatarContainer.querySelector('.avatar-fallback');
+            if (fallback) fallback.remove();
+        };
     }
 
     // Populate marks table and calculate totals
@@ -292,8 +322,8 @@ function initLeaderboard() {
                 <td>#${index + 1}</td>
                 <td>
                     <div style="display: flex; align-items: center; gap: 10px;">
-                        <div style="width: 30px; height: 30px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: rgba(59, 130, 246, 0.1);">
-                            <img src="${student.avatar}" alt="${student.name}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none'">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: rgba(59, 130, 246, 0.1); border: 2px solid rgba(59, 130, 246, 0.3); display: flex; align-items: center; justify-content: center;">
+                            <img src="${student.avatar}" alt="${student.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\\'color: #3b82f6; font-weight: bold; font-size: 1.2rem;\\'>${student.name.charAt(0).toUpperCase()}</span>'">
                         </div>
                         <span>${student.name}</span>
                     </div>
